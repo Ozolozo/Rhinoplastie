@@ -116,7 +116,8 @@
   .hero-surgeons {
     background: var(--navy);
     padding: 5rem 3.5rem 4rem;
-    display: flex; flex-direction: column; justify-content: center;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    padding-top: clamp(5rem, 12vh, 8rem);
     position: relative; overflow: hidden;
   }
   .hero-surgeons::before {
@@ -134,7 +135,8 @@
   .hero-patients {
     background: var(--ivory);
     padding: 5rem 3.5rem 4rem;
-    display: flex; flex-direction: column; justify-content: center;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    padding-top: clamp(5rem, 12vh, 8rem);
     position: relative; overflow: hidden;
   }
   .hero-patients::before {
@@ -222,6 +224,7 @@
     transition: all 0.3s;
     animation: fadeUp 0.6s 0.5s both;
     font-family: 'DM Sans', sans-serif;
+    margin-top: auto;
   }
   .hero-surgeons .hero-cta-btn {
     background: var(--gold); color: var(--navy);
@@ -393,6 +396,94 @@
     background: linear-gradient(to right, rgba(201,168,76,0.35), rgba(201,168,76,0.08));
   }
 
+  /* ── Bio / About ── */
+  .bio-section { background: var(--navy); }
+  .bio-grid {
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 3.5rem; align-items: start;
+  }
+  .bio-photo-wrap {
+    position: relative;
+  }
+  .bio-photo {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: grayscale(15%);
+    border: 1px solid rgba(201,168,76,0.2);
+    transition: filter 0.4s;
+  }
+  .bio-photo:hover { filter: grayscale(0%); }
+  .bio-photo-label {
+    position: absolute; bottom: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold); color: var(--navy);
+    padding: 0.35rem 1.2rem;
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .bio-content {}
+  .bio-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--ivory);
+    font-weight: 400; margin-bottom: 0.3rem;
+  }
+  .bio-role {
+    font-size: 0.78rem; color: var(--gold);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .bio-text {
+    color: rgba(245,240,232,0.55);
+    font-size: 0.88rem; line-height: 1.85;
+    font-weight: 300; margin-bottom: 1.2rem;
+  }
+  .bio-text strong {
+    color: rgba(245,240,232,0.75);
+    font-weight: 500;
+  }
+  .bio-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.6rem;
+    margin: 1rem 0 1.5rem;
+    padding-left: 0;
+  }
+  .bio-list li {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    color: rgba(245,240,232,0.5);
+    font-size: 0.84rem; line-height: 1.65;
+    font-weight: 300;
+  }
+  .bio-list li::before {
+    content: '→'; flex-shrink: 0;
+    color: var(--gold); font-weight: 600;
+  }
+  .bio-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0.8rem 1.8rem;
+    background: var(--gold); color: var(--navy);
+    text-decoration: none;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 4px; transition: all 0.3s;
+  }
+  .bio-cta:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201,168,76,0.3);
+  }
+
+  @media (max-width: 900px) {
+    .bio-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .bio-photo-wrap {
+      max-width: 240px;
+    }
+  }
+
   /* ── Divider ── */
   .divider {
     height: 1px;
@@ -532,6 +623,7 @@
   <ul class="nav-center">
     <li><a href="#cerrahlar">Cerrahlar için</a></li>
     <li><a href="#patients">Pour les patients</a></li>
+    <li><a href="#about">À propos</a></li>
     <li><a href="#contact">Contact · İletişim</a></li>
   </ul>
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
@@ -543,6 +635,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#cerrahlar" onclick="closeMenu()">Cerrahlar için</a>
   <a href="#patients" onclick="closeMenu()">Pour les patients</a>
+  <a href="#about" onclick="closeMenu()">À propos</a>
   <a href="#contact" onclick="closeMenu()">Contact · İletişim</a>
 </div>
 
@@ -694,6 +787,46 @@
           <div class="bridge-line"></div>
           <div class="flag-pill">🇹🇷 Türkçe</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════
+     BIO / ABOUT
+     ═══════════════════════════════════ -->
+<section class="bio-section" id="about">
+  <div class="container">
+    <div class="section-tag">À propos · Hakkımda</div>
+    <div class="bio-grid">
+      <div class="bio-photo-wrap reveal">
+        <img src="Photo%20Profil.png" alt="Ozan Tosun" class="bio-photo">
+        <div class="bio-photo-label">France → Türkiye</div>
+      </div>
+      <div class="bio-content reveal">
+        <h2 class="bio-name">Ozan Tosun</h2>
+        <div class="bio-role">Interprète & Coordinateur médical · Tıbbi Tercüman & Koordinatör</div>
+
+        <p class="bio-text">Je travaille en tant qu'interprète et coordinateur pour des chirurgiens en Turquie, spécialisé dans l'accompagnement de <strong>patients francophones</strong> souhaitant réaliser des interventions de chirurgie esthétique, principalement en <strong>rhinoplastie</strong> et <strong>greffe capillaire</strong>.</p>
+
+        <p class="bio-text">Basé en France, je gère l'ensemble du parcours patient en amont :</p>
+
+        <ul class="bio-list">
+          <li>Prise de contact et suivi commercial — réponse aux demandes, explication des procédures, des tarifs et de l'organisation</li>
+          <li>Collecte des informations médicales et des photos pour évaluation</li>
+          <li>Coordination avec le chirurgien pour obtenir un avis médical et un devis adapté</li>
+          <li>Préparation complète du séjour — organisation, déroulement, logistique</li>
+        </ul>
+
+        <p class="bio-text">J'interviens également comme <strong>interprète français–turc</strong> lors des consultations en visioconférence, pendant les étapes pré-opératoires et post-opératoires.</p>
+
+        <p class="bio-text">Mon rôle : assurer une communication fluide, rassurer le patient et faciliter chaque étape, de la première prise de contact jusqu'au suivi après l'intervention.</p>
+
+        <a href="https://wa.me/33607725915" target="_blank" class="bio-cta">
+          💬 Me contacter
+        </a>
       </div>
     </div>
   </div>
